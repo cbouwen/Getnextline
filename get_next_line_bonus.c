@@ -6,7 +6,7 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:59:06 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/05/12 16:20:25 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/09/27 14:05:10 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_readline(int fd, char *static_line)
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(static_line, '\n') && bytes_read > 0)
+	while (!ft_strchr_gnl(static_line, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -30,7 +30,7 @@ char	*ft_readline(int fd, char *static_line)
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
-		static_line = ft_strjoin(buffer, static_line);
+		static_line = ft_strjoin_gnl(buffer, static_line);
 		if (!static_line)
 			return (NULL);
 	}
@@ -56,7 +56,7 @@ char	*ft_new_static(char *sl)
 	}
 	else
 	{
-		new_static = (char *)malloc(sizeof(char) * (ft_strlen(sl) - ++i + 1));
+		new_static = (char *)malloc(sizeof(char) * (strlen_gnl(sl) - ++i + 1));
 		if (!new_static)
 			return (NULL);
 		while (sl[i])

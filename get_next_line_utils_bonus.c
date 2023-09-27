@@ -6,13 +6,13 @@
 /*   By: cbouwen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:00:13 by cbouwen           #+#    #+#             */
-/*   Updated: 2023/05/12 16:13:35 by cbouwen          ###   ########.fr       */
+/*   Updated: 2023/09/27 14:05:59 by cbouwen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_gnl(const char *s, int c)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *buffer, char *static_line)
+char	*ft_strjoin_gnl(char *buffer, char *static_line)
 {
 	char	*new_string;
 	int		i;
@@ -43,8 +43,8 @@ char	*ft_strjoin(char *buffer, char *static_line)
 			return (NULL);
 		static_line[0] = '\0';
 	}
-	new_string = (char *)malloc(sizeof(char) * (ft_strlen(buffer)
-				+ ft_strlen(static_line) + 1));
+	new_string = (char *)malloc(sizeof(char) * (strlen_gnl(buffer)
+				+ strlen_gnl(static_line) + 1));
 	if (!new_string)
 		return (NULL);
 	i = -1;
@@ -58,7 +58,7 @@ char	*ft_strjoin(char *buffer, char *static_line)
 	return (new_string);
 }
 
-size_t	ft_strlen(char *s)
+size_t	strlen_gnl(char *s)
 {
 	size_t	i;
 
